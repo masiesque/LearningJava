@@ -1,6 +1,6 @@
 package br.com.masiesque.Isobrescrista.domain;
 
-public class Anime extends Object {
+public class Anime {
     private String nome;
 
     @Override
