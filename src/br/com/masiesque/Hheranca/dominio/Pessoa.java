@@ -2,9 +2,9 @@ package br.com.masiesque.Hheranca.dominio;
 
 public class Pessoa{
 
-    private String name;
-    private Address address;
-    private  String cpf;
+    protected String name;
+    protected Address address;
+    protected String cpf;
 
 //metodos específicos:
 
@@ -18,7 +18,14 @@ public class Pessoa{
 //metodos específicos:
 
     //construtor
+    public Pessoa(String name){
+        this.name=name;
+    }
 
+    public Pessoa(String name, String cpf){
+        this(name);
+        this.cpf = cpf;
+    }
     //construtor
 
 //getters e setter
