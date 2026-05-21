@@ -10,5 +10,9 @@ public class CarrTest01 {
         //Carro.VELOCIDADE_LIMIT;-> A maneira correta é chamar a variável public static, pela própria class public
 
         System.out.println(Carro.VELOCIDADE_LIMIT);
+        Carro carro = new Carro();
+        carro.COMPRADOR.setName("Mazda");
+        //System.out.println(carro.COMPRADOR.getName()); OU
+        System.out.println(carro.COMPRADOR.toString());
     }
 }
