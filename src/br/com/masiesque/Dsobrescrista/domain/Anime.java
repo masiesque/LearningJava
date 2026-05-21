@@ -1,0 +1,23 @@
+package br.com.masiesque.Dsobrescrista.domain;
+
+public class Anime {
+    private String nome;
+
+    @Override
+    public String toString() {
+        return "Anime: "+ nome;
+    }
+
+    //construtor:
+    public Anime(String nome){
+        this.nome = nome;
+    }
+    //getter e setter
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
