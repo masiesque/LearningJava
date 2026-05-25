@@ -1,43 +1,34 @@
 package br.com.masiesque.Genumeracoes.domain;
 
 public class Cliente {
+
+     public enum TipoPagamento{
+        DEBITO,
+         CREDITO;
+    }
     private String name;
     private TypeClient type;
+    private TipoPagamento tipoPagamento;
 
     @Override
     public String toString() {
         return "name:{"+"'"+name+"'"+
-                "tipo:"+type+"}";
-    }
+                "\ntipo:"+type+
+                "\ntipoInt: "+type.getValor()+"}"+
+                "\ntipoPagamento: "+ tipoPagamento+"}\n";
+    }//podemos usar o toString para printar os nossos atributos, pq o metodo toString está dentro da nossa classe.E uma
+    //classe tem acesso direto aos seus atributos privates.
 
 
     //construtor
 
-    public Cliente(String name, TypeClient type){
+    public Cliente(String name, TypeClient type,TipoPagamento tipoPagamento ){
         this.name = name;
         this.type = type;
+        this.tipoPagamento = tipoPagamento;
     }
     //construtor
 
-    //getters e setters
-    public String getName()
-    {
-        return this.name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public TypeClient getType() {
-        return type;
-    }
-    public void setType(TypeClient type)
-    {
-        this.type = type;
-    }
-
-    //getters e setters
 
 
 
