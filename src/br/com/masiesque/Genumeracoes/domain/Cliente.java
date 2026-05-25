@@ -2,10 +2,7 @@ package br.com.masiesque.Genumeracoes.domain;
 
 public class Cliente {
 
-     public enum TipoPagamento{
-        DEBITO,
-         CREDITO;
-    }
+
     private String name;
     private TypeClient type;
     private TipoPagamento tipoPagamento;

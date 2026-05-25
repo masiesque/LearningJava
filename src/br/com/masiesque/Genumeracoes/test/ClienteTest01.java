@@ -1,7 +1,7 @@
 package br.com.masiesque.Genumeracoes.test;
 
 import br.com.masiesque.Genumeracoes.domain.Cliente;
-import br.com.masiesque.Genumeracoes.domain.Cliente.TipoPagamento;
+import br.com.masiesque.Genumeracoes.domain.TipoPagamento;
 import br.com.masiesque.Genumeracoes.domain.TypeClient;
 
 public class ClienteTest01 {
