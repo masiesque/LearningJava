@@ -6,9 +6,9 @@ import br.com.masiesque.HclassesAbstratas.domain.Gerente;
 
 public class FuncionarioTest001 {
     public static void main(String[] args) {
-        Gerente gerente = new Gerente("Nami", 89121);
+        Gerente gerente = new Gerente("Nami", 12000.00);
         System.out.println(gerente);
-        Dev desenvolvedor = new Dev("Zoro",813291734);
+        Dev desenvolvedor = new Dev("Zoro",30000.00);
         System.out.println(desenvolvedor);
 
 

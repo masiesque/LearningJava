@@ -9,6 +9,12 @@ public class Dev extends Funcionario{
         return "Nome: {"+"'"+name+"'"+","+"\n"+
                 "Salário : "+wage+"}";
     }
+
+    @Override
+    public double calcularBonus()
+    {
+       return this.wage = this.wage+ this.wage *0.6;
+    }
 }
 
 
