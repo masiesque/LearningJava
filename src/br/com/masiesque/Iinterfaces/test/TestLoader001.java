@@ -10,5 +10,7 @@ public class TestLoader001 {
 
         database.loading();
         file.loading();
+        database.checkPermission();
+        file.checkPermission();
     }
 }
