@@ -15,7 +15,7 @@ public class Gerente extends Funcionario {
 
     @Override
     public double calcularBonus() {
-        return this.wage = this.wage+ this.wage * 0.5;
+        return this.wage = this.wage+ this.wage  * 0.5;
     }
 }
 
