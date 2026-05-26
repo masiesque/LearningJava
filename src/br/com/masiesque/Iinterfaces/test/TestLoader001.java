@@ -1,5 +1,6 @@
 package br.com.masiesque.Iinterfaces.test;
 
+import br.com.masiesque.Iinterfaces.domain.DataLoader;
 import br.com.masiesque.Iinterfaces.domain.DatabaseLoader;
 import br.com.masiesque.Iinterfaces.domain.FileLoad;
 
@@ -12,5 +13,7 @@ public class TestLoader001 {
         file.loading();
         database.checkPermission();
         file.checkPermission();
+
+        DataLoader.retrieveMaxDataSize();
     }
 }
