@@ -9,12 +9,7 @@ public class Computador extends Produto{
 
     @Override
     public double calcularImposto() {
-        System.out.println("Getting ready ....");
         return valor * IMPOSTO_POR_CENTO;
     }
 
-    @Override
-    public String toString() {
-        return "Nome: "+name+"\nValor: "+valor;
-    }
 }

@@ -17,4 +17,8 @@ public abstract class Produto implements Taxavel {
     public double getValor() {
         return valor;
     }
+    @Override
+    public String toString() {
+        return "Nome: "+name+"\nValor: "+valor;
+    }
 }

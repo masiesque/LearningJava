@@ -1,19 +1,20 @@
 package br.com.masiesque.Jpolimorfismo.service;
-import br.com.masiesque.Jpolimorfismo.domain.Computador;
-import br.com.masiesque.Jpolimorfismo.domain.Monitor;
+import br.com.masiesque.Jpolimorfismo.domain.Produto;
 
 public class CalculadoraImposto {
 
-    public static void impostoComp(Computador pc)
-    {
-        double imposto = pc.calcularImposto();
-        System.out.println("Imposto do "+pc.getName()+": "+imposto) ;
+    public static void calculoImposto(Produto product) {
+        System.out.println("Calculando imposto do Produto.....");
+        double result = product.calcularImposto();
+        System.out.println("Imposto do " + product.getName() + ": " + result);
     }
 
-    public static void impostoMonitor(Monitor monitor)
-    {
-        double imposto = monitor.calcularImposto();
-        System.out.println("Imposto do "+monitor.getName()+": "+imposto);
-    }
 
 }
+
+
+
+//deixamos o metodo estático(pois não usamos nenhum atributo da classe), para nao precisarmos instanciar ele como objeto
+//apenas usamos ele chamando a classe já inicializada pela JVM.
+
+
