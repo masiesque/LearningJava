@@ -1,5 +1,6 @@
 package br.com.masiesque.Jpolimorfismo.service;
 import br.com.masiesque.Jpolimorfismo.domain.Produto;
+import br.com.masiesque.Jpolimorfismo.domain.Tomate;
 
 public class CalculadoraImposto {
 
@@ -7,6 +8,12 @@ public class CalculadoraImposto {
         System.out.println("Calculando imposto do Produto.....");
         double result = product.calcularImposto();
         System.out.println("Imposto do " + product.getName() + ": " + result);
+
+        if(product instanceof Tomate)
+        {
+            Tomate tomate = (Tomate)product;
+            System.out.println("Data de validade:"+ tomate.getValidade());
+        }
     }
 
 
