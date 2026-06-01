@@ -1,0 +1,30 @@
+package br.com.masiesque.Lstring.test;
+
+import java.util.StringJoiner;
+
+public class Test01 {
+    public static void main(String[] args) {
+
+        String name1 = "Breno";//instanciando de maneira literal
+        String name = "Breno";//instanciando de maneira literal
+        System.out.println(name1 == name);
+
+        System.out.println(name1.concat(" Masi"));
+        System.out.println(name1 == name);
+            String name2 = new String("Breno");
+        System.out.println(name == name2);
+
+    }
+
+
+
+}
+//No Java ja sabemos que String são objetos vinda da classe String. Elas são objetos imutáveis, ou seja, uma vez que uma
+//variável referencia ela na memória heap é criada essa String. Na realidade por padrão temos oq chamamos de String's Pool
+//que como o próprio nome já diz, é literalemnte um local na memória onde ficam armazenadas as Strings, quando instanciadas de maneira literal
+//Quando instanciamos elas como um objeto(new String()) criamos um objeto na heap, que irá apontar para String Pool;
+//IMPORTANTE dizer que quando criamos duas ou mais variaveis de referencia que tem a mesma String sendo referenciada, elas apontam para o mesmo
+//objeto na String Pool;
+
+
+
