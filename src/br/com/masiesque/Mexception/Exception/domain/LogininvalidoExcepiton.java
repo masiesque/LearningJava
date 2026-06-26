@@ -4,16 +4,18 @@ import java.lang.Exception;
 public class LogininvalidoExcepiton extends Exception{// estamos extendendo da classe Exception, que é checked;
 
     public LogininvalidoExcepiton() {
+        // Chama o construtor da superclasse Exception que recebe uma mensagem.
+        // Será utilizada uma mensagem padrão quando nenhuma for informada.
         super("Dados do login inválidos.");
-        //estamos usando o polimorfismo da super classe/ classe mae
-        //caso o usuario nao passe nenhuma mensagem como parametro
+
     }
 
     public LogininvalidoExcepiton(String message) {
-        //estamos usando o polimorfismo da super classe/ classe mae
-        //caso o usuário passe alguma mensagem iremos sobrescrever o metodo construtor da classe mae, com a mensagem
-        // do usuario.
+        // Chama o construtor da superclasse Exception passando a mensagem
+        // recebida, permitindo personalizar a descrição da exceção.
         super(message);
     }
 }
-//construtores não são métodos e tbm não são herdados
+//construtores não são métodos e tbm não são herdados. Até pq os construtores são usados ara bildar um objeto
+// especifico da classe que os chama, por isso não pode ser herdado na hora de instanciar um objeto de uma subclasse.
+// Mas pode ser chamado com o "super" sempre que quiser na hora de biuldar uma subclasse.
