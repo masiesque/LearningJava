@@ -1,10 +1,8 @@
 package br.com.masiesque.NdatasElocales.testes;
 
-import javax.sql.rowset.serial.SQLOutputImpl;
-import java.time.DateTimeException;
+
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Locale;
 import java.util.Scanner;
 import java.time.LocalDate;
 
