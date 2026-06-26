@@ -29,6 +29,10 @@ public class Test01 {
 //IMPORTANTE dizer que quando criamos duas ou mais variaveis de referencia que tem a mesma String sendo referenciada, elas apontam para o mesmo
 //objeto na String Pool;
 
+//|--------------------------------------------------------------------------------------------------------------------|
+//|(string1 == string2) está comparando se elas apontam/referenciam o mesmo endereço de memória(ou seja o mesmo objeto)|
+//|(string1.equals(string2), apenas verifica se os objetos que elas apontam, contem o mesmo valor.                     |
+//|--------------------------------------------------------------------------------------------------------------------|
 
 //String VS StringBuilder:
 //String é imutável. Já o StringBuilder ele é mutável(funciona por alocação dinâmica, mas vc tem acesso direto por referencia de memória a este obje dentro da heap, por poteiros)
