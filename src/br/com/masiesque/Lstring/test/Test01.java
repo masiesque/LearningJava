@@ -1,5 +1,6 @@
 package br.com.masiesque.Lstring.test;
 
+import javax.naming.Name;
 import java.util.StringJoiner;
 
 public class Test01 {
@@ -9,10 +10,12 @@ public class Test01 {
         String name = "Breno";//instanciando de maneira literal
         System.out.println(name1 == name);
 
-        System.out.println(name1.concat(" Masi"));
+        System.out.println(name1.concat(" Masi")); // name1 += " Masi";
         System.out.println(name1 == name);
             String name2 = new String("Breno");
         System.out.println(name == name2);
+        System.out.println("Agora se comparamos o valor que o objeto aponta na POOL");
+        System.out.println(name == name2.intern());
 
     }
 
@@ -27,4 +30,5 @@ public class Test01 {
 //objeto na String Pool;
 
 
-
+//String VS StringBuilder:
+//String é imutável. Já o StringBuilder ele é mutável(funciona por alocação dinâmica, mas vc tem acesso direto por referencia de memória a este obje dentro da heap, por poteiros)
