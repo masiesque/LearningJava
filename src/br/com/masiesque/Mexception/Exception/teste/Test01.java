@@ -1,4 +1,4 @@
-package br.com.masiesque.Mexception.Expection;
+package br.com.masiesque.Mexception.Exception.teste;
 
 import java.io.File;
 import java.io.IOException;
