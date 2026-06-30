@@ -10,8 +10,10 @@ public class FileTest01 {
 
         try{
            boolean isCreated =  file.createNewFile();
+           boolean isDeleted = file.delete();
 
             System.out.println(isCreated);
+            System.out.println(isDeleted);
 
         }catch(IOException e)
         {
