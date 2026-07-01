@@ -22,7 +22,7 @@ public class FileReadertest03 {
           int i;
           while((i=fr.read())!= -1)
               System.out.print((char)i);
-
+                //O metodo read, é auto-incrementado por isso não preciso de algo que fique reinterando ele
         }catch( IOException r)
         {
             r.printStackTrace();
