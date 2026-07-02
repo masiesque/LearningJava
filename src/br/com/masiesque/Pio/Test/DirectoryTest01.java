@@ -26,6 +26,6 @@ public class DirectoryTest01 {
 
         File folderNew = new File("FolderRenamed");
         boolean isRenamed= folder.renameTo(folderNew);
-        System.out.println("Diretório renomeado: "+isRenamed);
+        System.out.println("Diretório renomeado: "+isRenamed);  
     }
 }
