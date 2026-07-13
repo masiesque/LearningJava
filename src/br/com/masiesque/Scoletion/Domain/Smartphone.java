@@ -28,7 +28,15 @@ public class Smartphone {
     //y.hashCode()!= x.hashCode() x.equals(y) deverá ser false.
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return serialNumber == null ? 0 : this.serialNumber.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Smartphone{" +
+                "serialNumber='" + serialNumber + '\'' +
+                ", marca='" + marca + '\'' +
+                '}'+'\n';
     }
 
     public String getSerialNumber() {

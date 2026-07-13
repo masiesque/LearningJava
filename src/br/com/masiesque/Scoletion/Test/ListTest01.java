@@ -23,3 +23,6 @@ public class ListTest01 {
     }
 
 }
+
+//Não pode passar no castingo do ArrayList, tipos primitivos. Isso pq o ArrayLiist chama internatmente métodos(equal e hashCode)
+//Que obviamente só podem ser acessados por objetos, por isso deve-se utilizar wrappers;
