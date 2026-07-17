@@ -13,7 +13,6 @@ public class MethodRefTest01 {
         List<Anime>animesList = new ArrayList<>(List.of
                 (new Anime("Naruto Shippuden",500),
                         new Anime("One piece", 9000),
-
                         new Anime("Attack on titan",300)));
 //feito com uma subClasse anonima de comparator:
 //        Collections.sort(animesList, new Comparator<Anime>(){
@@ -26,7 +25,7 @@ public class MethodRefTest01 {
 //        });
 
        // Collections.sort(animesList,(a1,a2)->a1.getName().compareTo(a2.getName()));//com lambda
-        Collections.sort(animesList, AnimeComparators::compareByName);//por method reference;
+       // Collections.sort(animesList, AnimeComparators::compareByName);//por method reference;
         System.out.println(animesList);//já ordenado, ele muda a lista na memoria heap
     }
 
