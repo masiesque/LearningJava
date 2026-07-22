@@ -2,7 +2,7 @@ package br.com.masiesque.ZZBexecutors.Test;
 
 import java.util.concurrent.*;
 
-public class Test01 {
+public class ExecutorsTest01 {
 
     public static void main(String[] args) {
 
