@@ -1,11 +1,52 @@
-package br.com.masiesque.Zthreads.Domain;
+package br.com.masiesque.ZZAconcorrencia.Domain;
 
+import java.util.Date;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Members {
 
     private final Queue<String> emails = new ArrayBlockingQueue<>(10);
+    private ReentrantLock lock = new ReentrantLock();
+    private Condition condition = new Condition() {
+        @Override
+        public void await() throws InterruptedException {
+
+        }
+
+        @Override
+        public void awaitUninterruptibly() {
+
+        }
+
+        @Override
+        public long awaitNanos(long nanosTimeout) throws InterruptedException {
+            return 0;
+        }
+
+        @Override
+        public boolean await(long time, TimeUnit unit) throws InterruptedException {
+            return false;
+        }
+
+        @Override
+        public boolean awaitUntil(Date deadline) throws InterruptedException {
+            return false;
+        }
+
+        @Override
+        public void signal() {
+
+        }
+
+        @Override
+        public void signalAll() {
+
+        }
+    };
      private boolean open = true;
 
 
@@ -15,36 +56,44 @@ public class Members {
      }
      public int pendingEmails()
      {
-         synchronized (this.emails)/// sincronisamos a queue emails, para que apenas um thread por vez acesse esse objeto
+        lock.lock();
+        try
          {
              return emails.size();
-         }
+         }finally {
+            lock.unlock();
+        }
      }
 
      public void addMemberEmail(String email)
      {
-         synchronized (this.emails)
+            lock.lock();
+            try
          {
              String ThreadName = Thread.currentThread().getName();
              System.out.println(ThreadName+ " Adicionou email a fila");
-             this.emails.add(email);
-             this.emails.notifyAll();
-         }
+             condition.signalAll();
+         }finally {
+                lock.unlock();
+            }
      }
 
      public String catchEmails() throws InterruptedException {
 
          System.out.println(Thread.currentThread().getName()+ "Checking if there are Emails");
-         synchronized (this.emails)
+            lock.lock();
+            try
          {
              while(this.emails.size()==0)
              {
                  if(! open) return null;
                  System.out.println(Thread.currentThread().getName()+ "Não tem email disponível na fila , entrando em modo de espera");
-                 this.emails.wait();
+                    condition.await();
              }
              return this.emails.poll();// o metodo poll ele retorna e remove o primeiro elemento da fila;
-         }
+         }finally {
+                lock.unlock();
+            }
          // REGRA DE FUNCINAMENTO:
          // essa função serve para verificar e pegar emails existentes.
          //Damos um loocked no objeto com o syncronized e lançamos um looping na lista e colocamos como excessão[if(! open)] para verificar se tem email na lista
@@ -56,10 +105,13 @@ public class Members {
 
      public void close()
      {
-        synchronized (this.emails){
+            lock.lock();
+            try {
             System.out.println(Thread.currentThread().getName()+ "Notificando todas as Threads que não estamos não estamos mais pegando emails");
-            this.emails.notifyAll();
-        }
+            condition.notifyAll();
+        }finally {
+                lock.unlock();
+            }
      }
 
 
