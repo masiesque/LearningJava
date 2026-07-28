@@ -4,7 +4,7 @@ import br.com.masiesque.ZZDjdbc.Domain.Producer;
 import br.com.masiesque.ZZDjdbc.Repository.ProducerRepository;
 import lombok.extern.log4j.Log4j2;
 
-import java.awt.color.ProfileDataException;
+import java.util.List;
 
 @Log4j2
 public class ProducerService {
@@ -19,10 +19,35 @@ public class ProducerService {
         requiredValidID(id);
         ProducerRepository.delete(id);
     }
-    public static void uptade (Producer producer)
+    public static void update(Producer producer)
     {
         requiredValidID(producer.getId());
-        ProducerRepository.uptade(producer);
+        ProducerRepository.update(producer);
+    }
+
+    public static List<Producer> findAll ()
+    {
+       return  ProducerRepository.findAll();
+
+    }
+    public static List<Producer> findById (String name)
+    {
+        return ProducerRepository.findByName(name);
+
+    }
+
+    public static void showMetaData()
+    {
+        ProducerRepository.showProducerMetaData();
+    }
+
+    public static void driverMetaData(){
+
+        ProducerRepository.driverMetaData();
+    }
+
+    public static void showTypeScrollWorlking(){
+        ProducerRepository.showTypeScrollWorlking();
     }
 
 
