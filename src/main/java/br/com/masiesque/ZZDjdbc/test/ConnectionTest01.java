@@ -10,9 +10,9 @@ import java.util.List;
 public class ConnectionTest01 {
     public static void main(String[] args) {
 
-        Producer producer1 = Producer.builder().name("NHK").build();
-        Producer producerToUptade = Producer.builder().id(1).name("MADHOUSE").build();
-    
+//        Producer producer1 = Producer.builder().name("NHK").build();
+//        Producer producerToUptade = Producer.builder().id(1).name("MADHOUSE").build();
+
 //        ProducerService.save(producer1);
 //        ProducerService.delete(6);
 //        ProducerService.update(producerToUptade);
@@ -21,8 +21,15 @@ public class ConnectionTest01 {
 //        List<Producer> producerName = ProducerService.findById("Mad");
 //        log.info(producerName);
 
-//        ProducerService.showMetaData();
+  //ProducerService.showMetaData();
 //        ProducerService.driverMetaData();
-        ProducerService.showTypeScrollWorlking();
+//        ProducerService.showTypeScrollWorlking();
+       // List<Producer> producer = ProducerService.findByNameAndUpdateToUperCase("ion");
+//        List<Producer> producer = ProducerService.findByNameAndUpdateToLowerCase("bones");
+        //System.out.println(producer);
+          //  ProducerService.findByNameAndInsertWhenNotFound("TV Tokyo");
+
+        List<Producer> producerList = ProducerService.showAll();
+        System.out.println(producerList);
     }
 }

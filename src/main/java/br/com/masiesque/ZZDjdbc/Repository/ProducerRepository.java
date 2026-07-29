@@ -2,10 +2,9 @@ package br.com.masiesque.ZZDjdbc.Repository;
 
 import br.com.masiesque.ZZDjdbc.Domain.Producer;
 import br.com.masiesque.ZZDjdbc.conn.ConnectionFactory;
-import com.mysql.cj.protocol.Resultset;
 import lombok.extern.log4j.Log4j2;
 
-import javax.xml.transform.Result;
+import java.security.interfaces.EdECKey;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -173,8 +172,137 @@ public class ProducerRepository {
         }
     }
 
+    public static List<Producer> findByNameAndUpdateToUpperCase(String name)
+    {
+        List<Producer> producerList = new ArrayList<>();
+        String querySql = "SELECT * FROM anime_store.producer WHERE name LIKE '%%%s%%'".formatted(name);
+        log.info("Finding producer by that name....");
+
+        try(Connection connection = ConnectionFactory.getConnection();
+        Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = stmt.executeQuery(querySql))
+        {
+
+            while(rs.next()) {
+                rs.updateString("name", rs.getString("name").toUpperCase());
+                rs.updateRow();
+
+                Producer producer = Producer.builder().name(rs.getString("name")).id(rs.getInt("id")).build();
+                    producerList.add(producer);
+            }
+
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return producerList;
+    }
+    public static List<Producer> findByNameAndUpdateToLowerCase(String name)
+    {
+        List<Producer> producerList = new ArrayList<>();
+        String querySql = "SELECT * FROM anime_store.producer WHERE name LIKE '%%%s%%'".formatted(name);
+        log.info("Finding producer by that name....");
+
+        try(Connection connection = ConnectionFactory.getConnection();
+        Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = stmt.executeQuery(querySql))
+        {
+
+            while(rs.next()) {
+                rs.updateString("name", rs.getString("name").toLowerCase());
+                rs.updateRow();
+
+                Producer producer = Producer.builder().name(rs.getString("name")).id(rs.getInt("id")).build();
+                    producerList.add(producer);
+            }
+
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return producerList;
+    }
+
+    public static Producer findByNameAndInsertWhenNotFound(String name)
+    {
+        log.info("Procurando producer...");
+        String sqlQ = "SELECT * FROM anime_store.producer WHERE name like '%%%s%%'"
+                .formatted(name);
+
+        try( Connection con= ConnectionFactory.getConnection();
+           Statement stmt =con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+           ResultSet rs = stmt.executeQuery(sqlQ))
+        {
+            if(!rs.next())
+            {
+                log.info("Criando novo obj e entidade ");
+                rs.moveToInsertRow();
+                rs.updateString("name",name);
+                rs.insertRow();
+                rs.beforeFirst();
+                rs.next();
+                Producer producer1 = Producer.builder().name(rs.getString("name")).id(rs.getInt("id")).build();
+                return producer1;
+            }
+
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+             return null;
+    }
 
 
+    public static List<Producer> showAll()
+    {
+        String sql = "SELECT * FROM anime_store.producer;";
+
+        List<Producer>producers = new ArrayList<>();
+        try(Connection con =ConnectionFactory.getConnection();
+         Statement stmt = con.createStatement();
+         ResultSet rs = stmt.executeQuery(sql))
+        {
+            while(rs.next())
+            {
+                Producer producer = Producer.builder().name(rs.getString("name")).id(rs.getInt("id")).build();
+                producers.add(producer);
+            }
+
+        }catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return producers;
+    }
+
+    public static List<Producer> findByNamePreparedStatment(String name){
+        List<Producer>producers = new ArrayList<>();
+        log.info("Finding by name");
+        String sql = "SELECT * FROM anime_store.producer WHERE name LIKE ?;";
+        try(Connection con= ConnectionFactory.getConnection();
+           PreparedStatement ps= createdPrepatedStatment(con,sql,name))
+        {
+            ResultSet rs = ps.executeQuery();
+            log.info("Found producer!");
+            while(rs.next())
+            {
+                Producer producer = Producer.builder().name(rs.getString("name")).id(rs.getInt("id")).build();
+                producers.add(producer);
+            }
+
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return producers;
+    }
+
+
+private static PreparedStatement createdPrepatedStatment(Connection connection, String sql, String name) throws SQLException {
+    PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,name);
+        return preparedStatement;
+    }
 
 
 }

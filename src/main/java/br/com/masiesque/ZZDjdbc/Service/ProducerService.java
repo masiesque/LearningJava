@@ -50,6 +50,28 @@ public class ProducerService {
         ProducerRepository.showTypeScrollWorlking();
     }
 
+    public static List<Producer> findByNameAndUpdateToUperCase(String name){
+
+        return ProducerRepository.findByNameAndUpdateToUpperCase(name);
+    }
+
+    public static List<Producer> findByNameAndUpdateToLowerCase(String name){
+        return ProducerRepository.findByNameAndUpdateToLowerCase(name);
+    }
+
+    public static  Producer findByNameAndInsertWhenNotFound(String name){
+        return ProducerRepository.findByNameAndInsertWhenNotFound(name);
+    }
+
+    public static List<Producer> showAll(){
+        return ProducerRepository.showAll();
+    }
+
+    public static List<Producer> findByNamePreparedStatment(String name)
+    {
+        return ProducerRepository.findByNamePreparedStatment(name);
+    }
+
 
     private static void requiredValidID(Integer id)
     {
